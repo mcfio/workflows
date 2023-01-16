@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>mcfio/renovate-config",
-    "github>mcfio/renovate-config:automerge",
+    "github>mcfio/renovate-config:auto-merge",
   ],
   "platform": "github",
   "username": "i-pass-butter[bot]",

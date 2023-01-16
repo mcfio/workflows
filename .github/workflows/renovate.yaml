@@ -2,16 +2,18 @@
 name: "Renovate"
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       dryRun:
         description: Dry-Run
         default: "false"
         required: false
+        type: string
       logLevel:
         description: Log-Level
         default: "debug"
         required: false
+        type: string
       configurationFile:
         description: Renovate configuration file
         default: ".github/renovate.json"

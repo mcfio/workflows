@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+  "extends": [
+    "github>mcfio/renovate-config",
+    "github>mcfio/renovate-config:automerge",
+  ],
+  "platform": "github",
+  "username": "i-pass-butter[bot]",
+  "gitAuthor": "i-pass-butter <122760773+i-pass-butter[bot]@users.noreply.github.com>",
+  "repositories": ["mcfio/workflows"],
+}

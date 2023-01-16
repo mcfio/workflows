@@ -1,0 +1,52 @@
+---
+name: "Renovate"
+
+on:
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        description: Dry-Run
+        default: "false"
+        required: false
+      logLevel:
+        description: Log-Level
+        default: "debug"
+        required: false
+      configurationFile:
+        description: Renovate configuration file
+        default: ".github/renovate.json"
+        required: false
+        type: string
+    secrets:
+      app_id:
+        description: App ID of the application used to generate a token
+        required: true
+      app_private_key:
+        description: Private key of the application used to generate a token
+        required: true
+
+jobs:
+  renovate:
+    name: Renovate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Token
+        uses: tibdex/github-app-token@021a2405c7f990db57f5eae5397423dcc554159c # renovate: tag=v1.7.0
+        id: generate-token
+        with:
+          app_id: ${{ secrets.app_id }}
+          private_key: ${{ secrets.app_private_key }}
+
+      - name: Checkout
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Renovate
+        uses: renovatebot/github-action@6e0a8659644e144db359d9871d2789b6b37d54c0 # v34.102.8
+        env:
+          DRY_RUN: ${{ inputs.dryRun }}
+          LOG_LEVEL: ${{ inputs.logLevel }}
+        with:
+          configurationFile: ${{ inputs.configurationFile }}
+          token: ${{ steps.generate-token.outputs.token }}

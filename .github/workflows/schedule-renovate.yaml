@@ -19,8 +19,9 @@ on:
     branches:
       - main
     paths:
-      - .github/renovate.json
+      - .github/renovate.json5
       - .github/renovate/**.json
+      - .github/renovate/**.json5
       - .github/workflows/schedule-renovate.yaml
 
 jobs:

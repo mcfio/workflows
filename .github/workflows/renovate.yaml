@@ -6,17 +6,17 @@ on:
     inputs:
       dryRun:
         description: Dry-Run
-        default: "false"
+        default: false
         required: false
         type: string
       logLevel:
         description: Log-Level
-        default: "debug"
+        default: debug
         required: false
         type: string
       configurationFile:
         description: Renovate configuration file
-        default: ".github/renovate.json"
+        default: .github/renovate.json5
         required: false
         type: string
     secrets:
